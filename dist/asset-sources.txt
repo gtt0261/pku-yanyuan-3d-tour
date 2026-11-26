@@ -1,0 +1,27 @@
+北京大学一日游 · 场景素材与署名
+
+校园地理数据
+建筑轮廓、道路、湖岸与地表来自 OpenStreetMap 贡献者，ODbL 1.0。数据范围、采集时间、原始文件摘要和校界依据见同目录 map-sources.txt。建筑名录的核对结果见 venue-sources.txt，逐条来源保存在 venue-directory.js。
+https://www.openstreetmap.org/copyright
+
+白天天空
+Kloofendal 48d Partly Cloudy (Pure Sky)，摄影 Greg Zaal，天空处理 Jarod Guest，Poly Haven 发布，CC0 1.0。原始 2K HDR 的 SHA-256 为 5244534e9cf5b606f2ff513aa00ddb161b0a4826ffd88a0d3bd03ac29247d198。tools/prepare_sky.py 提取上半球、映射亮度并压缩，生成可离线加载的 day-sky.js。照片用作天空光照参考，地面与建筑由场景绘制。
+https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky
+https://polyhaven.com/license
+
+植被
+中远景树木使用透明摄影纹理，叶片、枝干、树丛分布、近岸垂柳和水面均在三维场景内实时绘制。四种植物素材的摄影者、来源、许可证和修改记录见同目录 vegetation-sources.txt；署名也可从网页「操作指南」查看。
+
+建筑参考
+北大校史与文物资料用于校核博雅塔、西校门、鲁斯亭与图书馆。程序生成地标的塔檐、塔刹、牌匾、瓦顶、台基、门窗和栏杆。模型比例与逐项实景比对见 landmark-sources.txt。塔脚小丘依文物记录做近似起伏。学校资料中的原照片未随作品分发。
+https://news.pku.edu.cn/info/2901/817231.htm
+https://fdcb.pku.edu.cn/yyww/wwxx/0322a24e16a748928a26e260ff721b76.htm
+https://www.sce.lb.pku.edu.cn/xyfw/xyfg/27bjdxjxjyxy217370.html
+https://fdcb.pku.edu.cn/yyww/wwxx/1038696418f74c3eaf89b10fdb3d729a.htm
+https://lib.pku.edu.cn/portal/cn/node/13
+https://lib.pku.edu.cn/2xxzzfw/26xwgg/261xwlb/bd5645.htm
+
+图形库
+Three.js r149（npm three 0.149.0），MIT License。发行文件 build/three.min.js 未作修改，完整许可证在 vendor/LICENSE。场景、相机、反射、程序化材质、建筑和插画使用本项目源码。
+https://github.com/mrdoob/three.js/tree/r149
+https://registry.npmjs.org/three/-/three-0.149.0.tgz

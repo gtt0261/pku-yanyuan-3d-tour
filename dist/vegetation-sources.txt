@@ -1,0 +1,29 @@
+燕园乔木纹理
+
+vegetation-assets.js 内含 2048 × 512 像素的透明 WebP 图集，可离线使用。四幅树木摄影分别抠取、校色并缩放，用于园林中远景的实时树冠。四格的来源从左至右如下。
+
+1. 垂柳
+Weeping willow, North Acton playing fields，David Hawgood，2006。Geograph Britain and Ireland，照片 226730。
+原照及此格抠图均采用 CC BY-SA 2.0 Generic。
+https://www.geograph.org.uk/photo/226730
+https://commons.wikimedia.org/wiki/File:Weeping_willow,_North_Acton_playing_fields_-_geograph.org.uk_-_226730.jpg
+https://creativecommons.org/licenses/by-sa/2.0/
+
+2. 橡树
+Solitary oak tree in crop field，Evelyn Simak，2015。Geograph Britain and Ireland，照片 4750457。
+原照及此格抠图均采用 CC BY-SA 2.0 Generic。
+https://www.geograph.org.uk/photo/4750457
+https://commons.wikimedia.org/wiki/File:Solitary_oak_tree_in_crop_field_-_geograph.org.uk_-_4750457.jpg
+https://creativecommons.org/licenses/by-sa/2.0/
+
+3. 银杏
+A golden Ginkgo biloba in autumn，Benjamin Ceci，2023。创作者将原照贡献到公共领域。
+https://commons.wikimedia.org/wiki/File:A_golden_Ginkgo_biloba_in_autumn.jpg
+
+4. 常绿针叶树
+high-res tree textures，rubberduck，2018。作者将自己的摄影剪成透明树形，并以 CC0 1.0 发布。本格取自 trees_1K.zip 中 tree_collection_1K.png 最右侧的完整树。
+https://opengameart.org/content/high-res-tree-textures
+https://opengameart.org/sites/default/files/trees_1K.zip
+https://creativecommons.org/publicdomain/zero/1.0/
+
+前三幅原图的人工背景蒙版、透明边缘、色彩校正、图集排版与压缩为本项目所做。第四幅的透明背景沿用摄影作者的处理。整张衍生图集按 CC BY-SA 2.0 Generic 提供，可按相同条件署名再用。公共领域和 CC0 原素材保留原有自由。照片用于表现校园中常见的温带树形，拍摄地点见各原作条目。

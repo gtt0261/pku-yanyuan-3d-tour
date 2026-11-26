@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f5ed">
+  <meta name="description" content="在三维燕园里，从未名湖畔出发，步行或骑行探索北京大学。">
+  <title>北京大学一日游 · 燕园漫游</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%239b463a'/%3E%3Cpath d='M7 31h26M10 27h20M12 23h16M14 19h12M16 15h8M18 11h4M20 6v5' fill='none' stroke='%23fff5dc' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-seal" aria-hidden="true"><i data-icon="pagoda"></i></span>
+      <div><h1>北京大学一日游</h1><div class="brand-en" lang="en">PEKING UNIVERSITY <span> / </span> CAMPUS EXPLORER</div></div>
+    </div>
+    <div class="header-actions">
+      <div class="segmented day-switch" role="group" aria-label="场景光照">
+        <button id="day" aria-pressed="true"><i data-icon="sun"></i><span>白天</span></button>
+        <button id="night" aria-pressed="false"><i data-icon="moon"></i><span>夜晚</span></button>
+      </div>
+      <span class="divide"></span>
+      <button class="quiet" id="help-btn" aria-label="操作指南"><i data-icon="help"></i><span>操作指南</span></button>
+      <button class="quiet square" id="full-btn" title="全屏漫游" aria-label="全屏漫游"><i data-icon="expand"></i></button>
+    </div>
+  </header>
+  <main>
+    <section class="viewport" id="viewport" aria-label="三维燕园，自由漫游">
+      <canvas id="world" tabindex="0" aria-label="三维场景。W A S D 移动，方向键转向，拖动环顾。"></canvas>
+      <div class="vignette"></div>
+      <div class="scene-status">
+        <div class="glass explore-tag"><b class="live-dot"></b><span id="mode-label">自由探索</span><span id="ride-speed" hidden>0 km/h</span></div>
+        <div class="compass" aria-hidden="true"><div class="compass-row" id="compass-row"></div><b></b></div>
+        <div class="glass meters">
+          <span class="fps"><i data-icon="signal"></i><b id="fps">—</b><small>FPS</small></span><span class="vline"></span>
+          <label title="渲染画质"><i data-icon="sliders"></i><select id="quality" aria-label="画质"><option value="high">高画质</option><option value="medium">均衡画质</option><option value="low">流畅画质</option></select><i class="chevron" data-icon="down"></i></label>
+        </div>
+      </div>
+      <div class="location">
+        <div class="location-kicker"><i data-icon="pin"></i><span>燕园校区</span><b></b><span id="district">湖区</span></div>
+        <div class="location-title"><h2 id="current-name">未名湖</h2><div class="scene-seal" aria-hidden="true">燕<br>园</div></div>
+        <div class="location-en" id="current-en" lang="en">WEIMING LAKE</div>
+      </div>
+      <button id="minimap-btn" class="minimap" aria-label="打开校园地图">
+        <canvas id="minimap" width="260" height="150" aria-hidden="true"></canvas>
+        <span class="map-north">N ▴</span><span class="map-caption"><i data-icon="map"></i> 校园地图 <i data-icon="out"></i></span>
+      </button>
+      <div class="touch-pad" id="touch-pad" aria-label="移动摇杆" role="group"><span></span></div>
+      <div id="tour-progress" hidden><div></div></div>
+      <div class="scene-message" id="loading"><span class="spinner"></span> 正在铺开燕园地图…</div>
+      <div id="toast" role="status" aria-live="polite"></div>
+    </section>
+    <section class="dock" aria-label="漫游控制">
+      <div class="dock-bar">
+        <div class="dock-heading"><div class="section-mark"></div><h2>景点漫游</h2><span lang="en">PLACES</span></div>
+        <div class="travel-controls">
+          <div class="segmented travel-switch" role="group" aria-label="出行方式">
+            <button id="walk" aria-pressed="true"><i data-icon="walk"></i>步行</button>
+            <button id="bike" aria-pressed="false"><i data-icon="bike"></i>骑行</button>
+          </div>
+          <button class="tour-button" id="tour"><i data-icon="play"></i><span>自动导览</span><small>15s</small></button>
+        </div>
+      </div>
+      <div class="postcards" id="postcards" aria-label="快速前往景点"></div>
+      <footer>
+        <div class="key-guide"><span><i data-icon="mouse"></i> 拖动环顾</span><b>·</b><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 移动</span><b>·</b><span><kbd>E</kbd> 上下车</span></div>
+        <span class="touch-guide">左侧摇杆移动 · 滑动场景环顾</span>
+        <a class="copyright" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap 贡献者</a>
+        <button class="footer-map" id="directory-btn"><i data-icon="layers"></i> 全校建筑索引 <i data-icon="arrow"></i></button>
+      </footer>
+    </section>
+  </main>
+  <dialog id="atlas" aria-labelledby="atlas-title">
+    <div class="dialog-head"><div><div class="overline">CAMPUS ATLAS</div><h2 id="atlas-title">燕园校园地图</h2></div><button class="icon-button close-dialog" aria-label="关闭地图"><i data-icon="close"></i></button></div>
+    <div class="atlas-body">
+      <div class="atlas-picture"><canvas id="atlas-map" aria-label="校园俯视图，可点击建筑定位"></canvas><span class="atlas-north">N ↑</span><div class="atlas-key"><b></b>当前位置 <em></em> 建筑</div></div>
+      <div class="directory"><label class="search"><i data-icon="search"></i><input id="search" type="search" placeholder="搜索楼名、食堂或宿舍号" aria-label="搜索校园地点"></label>
+        <div id="filters" class="filters" aria-label="建筑类别"></div><div class="results-head" id="results-head" aria-live="polite"></div><div class="venue-list" id="venue-list"></div></div>
+    </div>
+    <div class="atlas-foot"><span id="map-credit"></span> <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap 贡献者</a></div>
+  </dialog>
+  <dialog id="help" aria-labelledby="help-title">
+    <div class="dialog-head"><div><div class="overline">FIELD GUIDE</div><h2 id="help-title">漫游操作指南</h2></div><button class="icon-button close-dialog" aria-label="关闭指南"><i data-icon="close"></i></button></div>
+    <div class="guide-body">
+      <div><i data-icon="walk"></i><p><strong>在校园里走一走</strong>用 W A S D 或上下方向键移动，左右方向键转向。按住 Shift 加速。手机使用左侧摇杆。</p></div>
+      <div><i data-icon="mouse"></i><p><strong>抬头看看塔尖</strong>按住并拖动场景即可环顾，触屏直接滑动。点击景点卡或从地图选一栋楼，可立即前往。</p></div>
+      <div><i data-icon="bike"></i><p><strong>骑上共享单车</strong>点「骑行」或按 E，前往最近一辆停放的单车。再次按 E 在当前位置还车，可回来继续骑。</p></div>
+      <div><i data-icon="moon"></i><p><strong>看一次夜色里的燕园</strong>顶部可随时切换昼夜。点「自动导览」观看 15 秒实时运镜，再点一次可提前结束。</p></div>
+      <p class="guide-source">地标与楼宇外观为程序化重建，建筑高度在缺少实测值时按层数或类型估算。<a href="https://www.pku.edu.cn/visit.html" target="_blank" rel="noopener">北大校园资料 ↗</a></p>
+      <p class="guide-source"><a href="map-sources.txt" target="_blank">地图依据</a>　<a href="asset-sources.txt" target="_blank">素材来源</a>　<a href="vegetation-sources.txt" target="_blank">植被素材</a>　<a id="source-download" href="downloads/yanyuan-day-tour.zip" download>下载网页与源码 ↓</a></p>
+    </div>
+  </dialog>
+  <script src="icons.js"></script><script src="vendor/three.min.js"></script>
+  <script src="campus-data.js"></script><script src="venue-directory.js"></script><script src="landmarks.js"></script>
+  <script src="day-sky.js"></script><script src="vegetation-assets.js"></script><script src="flora.js"></script><script src="world.js"></script><script src="sky-water.js"></script><script src="atlas.js"></script><script src="postcards.js"></script><script src="tour.js"></script>
+</body>
+</html>

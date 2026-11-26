@@ -1,0 +1,45 @@
+北京大学一日游 · 楼宇名录核查说明
+资料核对日期为 2026 年 11 月 18 日。
+
+校界与计数
+
+作品覆盖燕园连续主校园及东北相接的成府园。校方校园图中还画有燕东园、畅春园、蔚秀园、中关园等隔路地块，作品按连续校界取舍。资源宾馆在西南门外，图中的资源东、西楼在南门内。校界来源与完整坐标见同目录 map-sources.txt。
+
+底图共有 240 个建筑轮廓，原始记录为其中 163 个提供了名称。根据校园图、楼号和地物点进一步确认了 11 个匿名轮廓，包括博雅国际酒店、勺园5甲楼、燕南园55号院、国际关系学院南北楼。当前目录收录 174 个具名轮廓、13 处另列的设施或院落点、4 处补绘体量，共 191 条。其余 66 个轮廓在场景中保留。一座楼可能包含多个测绘轮廓，一个院落也可能有数座未公开屋名的房屋。这些数字统计公开资料覆盖，尚缺现行校产台账和逐栋现场核验。
+
+命名与用途
+
+主要楼群按两版北大校园图核对，教学楼和院系再与招生材料及所在单位地址交叉核对。人文学苑按公开图上的 1 至 6 号院落识别，部门地址只表示该机构使用该楼。旧图所标朗润园中国经济研究中心一带，于 2024 年交付新结构经济学研究院使用。主要校园图供查阅，页面使用独立绘制的校园地图和模型。
+https://qbio.pku.edu.cn/QB2025/docs/20241225182041085560.pdf
+https://isdplus.pku.edu.cn/dfiles/pdf/map.pdf
+https://admission.pku.edu.cn/lxxx/lxyx/index.htm
+https://www.sis.pku.edu.cn/history9001/gz60/zxbd/1201886sis_20191382412.htm
+https://jjgcb.pku.edu.cn/sylm/bmdt/1059jjgcb158538.htm
+https://www.nse.pku.edu.cn/xygk/lxwm/
+
+餐饮中心名录对应校界内的农园、家园、学一、学五、勺园、佟园、艺园、燕南、松林、成府园十处。勺园中餐厅和西餐厅分别位于7号和6号楼，也可单独检索。校医院西北部的成府园食堂、45甲地下的物美超市及43楼的邮政所均按同址设施处理。院内餐饮档口随营业安排变化。
+https://cyzx.pku.edu.cn/bmgk/zzjg/index.htm
+https://news.pku.edu.cn/xwzh/adbbb6cafe1748558f3c4393732bffd7.htm
+https://old.pku.edu.cn/visitors/cy/index.htm
+https://news.pku.edu.cn/xwzh/5a81533082db47a5b4e159a448b5caec.htm
+
+住宿按楼号索引，连通的33、34A、34B等宿舍以共用外轮廓表示。43楼与勺园2号楼经改造成为学生公寓，2026年完成改造的勺园5号与5甲也是学生宿舍。勺园6号为留学生公寓，朗润园8至13号为高访公寓。两版校园图对于勺园1号与3号的南北位置有出入，目录保留与旧版编号平面及 OSM 一致的落点。勺园5乙办公室按图中5甲以东的楼体定位，该处与底图的勺园食堂标注重合，楼层间界线仅能近似。南门19至24号现按教学科研与办公用房展示。
+https://dorm.pku.edu.cn/guide/xsgy_fw/ggylpmt/index.htm
+https://dorm.pku.edu.cn/sylm/gzdt/zxdt/1064gyzx169541.htm
+https://jjgcb.pku.edu.cn/gcdt/a2028f5edae04662b7eaa0ef0c9c0bf1.htm
+https://jjgcb.pku.edu.cn/gcdt/1059jjgcb124515.htm
+https://news.pku.edu.cn/ztwz111/bwcxljsmztjy/xxpt_bwcx/44fdc22f947748c4abc3e32875a3aa74.htm
+https://news.pku.edu.cn/info/2921/184301.htm
+
+燕南园补绘
+
+校方文物名录覆盖50至66号共17个院号。按附楼号的院落总平面重新核对，57、58号属相连楼体的两部分，底图中个别旧楼号也有错位。补绘的62、64、65、66号以总平面中9处可辨建筑配准到局部米制坐标。9个用于拟合的中心点残差均小于5米，该值只描述拟合点。补绘体量的尺寸和屋顶按示意处理，以本次底图核查，四处均避开已测建筑及道路。其余燕南园具名建筑使用底图外轮廓。
+https://fdcb.pku.edu.cn/yyww/wwxx/6b647accaf9a47c789793d785785200c.htm
+https://paper.xinmin.cn/html/xmwb/2023-05-07/16/160806.html
+
+数据与验证
+
+每条名称的来源代号、别名、地理编号及局部坐标见 venue-directory.js。含地理关联的整理数据按 ODbL 1.0 提供。几何底图与坐标换算见 campus-data.js 及 map-sources.txt。运行源码内的 node tests/venues.cjs 可核对楼号、食堂条目、坐标和底图关联。
+© OpenStreetMap contributors
+https://www.openstreetmap.org/copyright
+https://opendatacommons.org/licenses/odbl/1-0/

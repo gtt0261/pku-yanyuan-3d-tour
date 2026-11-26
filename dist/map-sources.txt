@@ -1,0 +1,46 @@
+北京大学一日游 · 地图资料
+
+校园建筑、路网与水面
+
+© OpenStreetMap contributors（OpenStreetMap 贡献者）。本项目加工后的地理数据库 campus-data.js 按 Open Database License 1.0 提供，可直接下载和再利用。地图资料不包含建筑实景模型。
+
+地理数据库：https://www.openstreetmap.org/copyright
+数据库许可：https://opendatacommons.org/licenses/odbl/1-0/
+衍生数据：本文件同目录 campus-data.js
+源代码：tools/build_map.py（作品源码包内）
+
+本次原始 XML 获取于 2026-11-18，来自 OSM 官方地图 API。
+https://api.openstreetmap.org/api/0.6/map?bbox=116.2945,39.9805,116.3210,40.0050
+原始响应 SHA-256 为 7cfdf12c63d81893d102719ce7a9f282651b8deef0061549de6d55bc5e8b9485。该接口返回现行修订，日后重新下载可能有不同内容。
+
+漫游范围
+
+燕园主校园边界采用 OpenStreetMap 第 1330709889 号道路线，并入其东北相接的成府园第 1122569397 号用地。两块土地合计约 1.156 平方公里。北大新闻网确认成府园科技园属于校园内用地。
+https://www.openstreetmap.org/way/1330709889
+https://www.openstreetmap.org/way/1122569397
+https://news.pku.edu.cn/xwzh/129-108296.htm
+
+范围内包括未名湖、静园、勺园、朗润园、镜春园、鸣鹤园、燕南园和成府园。校方总体规划将蔚秀园、畅春园、承泽园、篓斗桥、燕东园、中关园等独立地块与燕园主校园分列。主校园外的生活区、院楼和其他校区位于作品边界以外。校方校园图与规划说明用于核对名称、归属和相对位置。
+https://math.pku.edu.cn/docs/2026-03/20260310093250361146.pdf
+https://zys.pku.edu.cn/web_zys/htmlsub/h30.html
+https://xyfwzx.pku.edu.cn/zxgk/gzzz/index.htm
+
+几何生成与覆盖
+
+保留范围内全部已标绘的 building 轮廓（包括有标签的多面关系）与独立 building:part；父轮廓下的屋顶细部不重复计入。楼群内有单独描绘的翼楼或相连基座，建筑轮廓数不能换算为产权宗数。建筑以面内代表点筛选，跨界的西校门保留完整。道路、水面和绿地按边界裁切。庭院与岛屿保留为内环。可见资料包括 240 个建筑轮廓（163 个在 OSM 中有名称）、498 段路、13 个水面、82 个绿地/运动场面、2 个公共铺装面及 16 个自行车停放位置。库中另保留 11 个设施点，同址食堂、办公室等用途不重复算作建筑。
+
+未名湖外环及岛洞来自 r21716245。博雅塔用地来自 w240825562，塔形参考北大校方所述八角十三层密檐、约 37 米描述。地图只记录当次公开地物，缺名楼仍保留轮廓。图中 76 个建筑有有效正高度、192 个有层数，其余体量及材质由场景程序近似。楼宇以外观展示，未取得逐栋实测或实时校产目录。
+https://www.openstreetmap.org/relation/21716245
+https://www.openstreetmap.org/way/240825562
+https://news.pku.edu.cn/info/2901/817231.htm
+
+校内功能核对。勺园 1 至 6 号楼有学生公寓资料，守仁国际中心东西馆有学术办公资料。成府园食堂位于校医院门诊楼西北角，同时具有独立的 OSM 餐饮点记录。
+https://shaoyuan.pku.edu.cn/xwdt/115sy2022519467.htm
+https://jjgcb.pku.edu.cn/gcdt/a2028f5edae04662b7eaa0ef0c9c0bf1.htm
+https://fdcb.pku.edu.cn/yyww/wwxx/d8caed2084b543438c01868a3dba687e.htm
+https://news.pku.edu.cn/xwzh/adbbb6cafe1748558f3c4393732bffd7.htm
+
+数据格式
+
+window.CAMPUS_DATA 使用 WGS84 经纬度换算的局部平面坐标。原点为东经 116.31150°、北纬 39.99100°。x 朝东，z 朝南，单位为米，地球平均半径取 6371008.8 米。
+boundary 为校界的 [x,z] 点列。buildings、water、green、surfaces 用 ring 和可选 holes 表达多边形，首点不重复。paths 用 points 表达折线；width 以米表示，未标实测宽度的道路按通行类别估算。bikeParking 为 [x,z] 数组。features 的 id 以 w、r 或 n 表示 OSM way、relation 或 node，多片/多段的序号附在点号后。facilities 提供 point 和可选的同址 buildingId。anchors 为开放水域、观景点、地标坐标。
